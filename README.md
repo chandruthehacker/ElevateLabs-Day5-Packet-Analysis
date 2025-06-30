@@ -1,7 +1,7 @@
 # Day 5 – Wireshark Network Traffic Analysis 📡
 
 > **Internship:** Elevate Labs Cybersecurity  
-> **Date:** <!-- YYYY‑MM‑DD -->  
+> **Date:** 30-06-2025
 > **Environment:** Kubuntu 22.04 LTS (VMware Workstation Pro) | Wireshark 4.x
 
 ---
@@ -17,7 +17,7 @@ Capture live network traffic, isolate four fundamental protocols (ICMPv6, DNS,�
 | **Host OS** | Windows 11 Pro |
 | **Guest OS** | Kubuntu 22.04 (64‑bit) in VMware |
 | **Wireshark** | 4.x (installed via `apt`) |
-| **Network** | Bridged Adapter (`ens33`) |
+| **Network** | TP-Link WiFi Adaptor |
 | **Traffic Generator** | `ping google.com`, Firefox browsing to `https://example.com` |
 
 ---
@@ -40,7 +40,7 @@ Capture live network traffic, isolate four fundamental protocols (ICMPv6, DNS,�
    icmpv6           # Echo request/reply
    dns              # DNS queries & responses
    http             # HTTP requests & responses
-   tcp     # TCP segments (handshakes, ACKs)
+   tcp              # TCP segments (handshakes, ACKs)
    ```
 6. **Save pcap‑ng files per‑protocol (icmp.pcap, dns.pcap, http.pcap, tcp.pcap).**
 
@@ -48,10 +48,10 @@ Capture live network traffic, isolate four fundamental protocols (ICMPv6, DNS,�
 
 ## 🗂️ Repository Contents
 - [tcp.pcap](Captures/tcp.pcap)  
-- [dns.pcap](dns.pcap)  
-- [http.pcap](http.pcap)  
-- [icmp-tcp-http-dns.pcap](icmp-tcp-http-dns.pcap)  
-- [screenshots/](screenshots/) (PNG images referenced below)
+- [dns.pcap](Captures/dns.pcap)  
+- [http.pcap](Captures/http.pcap)  
+- [icmp-tcp-http-dns.pcap](Captures/icmp-tcp-http-dns.pcap)  
+- [screenshots/](Screenshots/) (PNG images referenced below)
 
 ---
 
