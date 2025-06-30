@@ -1,7 +1,7 @@
 # Day 5 – Wireshark Network Traffic Analysis 📡
 
 > **Internship:** Elevate Labs Cybersecurity  
-> **Date:** 30-06-2025
+> **Date:** 30-06-2025   
 > **Environment:** Kubuntu 22.04 LTS (VMware Workstation Pro) | Wireshark 4.x
 
 ---
@@ -98,7 +98,7 @@ Hypertext Transfer Protocol
 **Insight: Plain HTTP GET request showing application layer headers.**
 
 
-TCP (3-Way Handshake)
+### TCP (3-Way Handshake)
 ```txt
 Frame 41: 66 bytes on wire (528 bits)
 Ethernet II
@@ -124,16 +124,16 @@ Transmission Control Protocol
 ## 🔍 Protocol Analysis Summary
 
 ### ICMPv6
-Captured packets during `ping google.com`. Confirms IPv6 connectivity with echo requests/replies.
+- Captured packets during `ping google.com`. Confirms IPv6 connectivity with echo requests/replies.
 
 ### DNS
-Shows resolution process for domains like `google.com`. Queries and responses observed using UDP.
+- Shows resolution process for domains like `google.com`. Queries and responses observed using UDP.
 
 ### HTTP
-Captured plain-text GET request headers while browsing `example.com`.
+- Captured plain-text GET request headers while browsing `example.com`.
 
 ### TCP
-Three-way handshake packets show connection establishment (SYN, SYN-ACK, ACK) for TCP sessions.
+- Three-way handshake packets show connection establishment (SYN, SYN-ACK, ACK) for TCP sessions.
 
 ---
 
