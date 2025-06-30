@@ -57,65 +57,51 @@ Capture live network traffic, isolate four fundamental protocols (ICMPv6, DNS,�
 
 ## 🔍 Protocol Analysis & Sample Packets
 
-### ICMPv6 (Ping)
+### ICMPv6
 
 ```txt
-Frame 12: 118 bytes on wire (944 bits)
-Ethernet II, Src: 08:00:27:12:34:56, Dst: 33:33:00:00:00:01
-Internet Protocol Version 6, Src: fe80::1, Dst: ff02::1
+Frame 1: 150 bytes on wire (1200 bits)
+Ethernet II, Src: 40:ae:30:16:61:2f, Dst: 33:33:00:00:00:16
+Internet Protocol Version 6, Src: fe80::376e:bd83:18bf:29ad, Dst: ff02::16
 Internet Control Message Protocol v6
-    Type: 128 (Echo request)
-    Code: 0
-    Identifier: 0x1a2b, Sequence: 1
+    Type: 143 (Multicast Listener Report Message v2)
 ```
 **Insight: Confirms IPv6 connectivity using ping (ICMPv6 echo request).**
 
 ### DNS
 ```txt
-Frame 28: 90 bytes on wire (720 bits)
-Ethernet II
-Internet Protocol Version 4
-User Datagram Protocol, Src Port: 48653 → Dst Port: 53
+Frame 4: 85 bytes on wire
+Ethernet II, Src: 40:ae:30:16:61:2f, Dst: ba:b8:e7:6b:dc:84
+IP: 192.168.203.196 → 192.168.203.36
+UDP, Src Port: 55046 → 53
 Domain Name System (query)
-    Transaction ID: 0x1c77
-    Questions: 1
-        Name: google.com
-        Type: A, Class: IN
+    Transaction ID: 0xb706
+    Query: AAAA mobile-gtalk.l.google.com
 ```
 **Insight: Demonstrates DNS resolution attempt for google.com.**
 
-### HTTP
+### HTTP over TLS (TLS 1.3)
 ```txt
-Frame 60: 518 bytes on wire (4,144 bits)
-Ethernet II
-Internet Protocol Version 4
-Transmission Control Protocol, Src Port: 443 → 49216
-Hypertext Transfer Protocol
-    GET / HTTP/1.1
-    Host: example.com
-    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0)
+Frame 21: 799 bytes on wire
+TLSv1.3 Record Layer: Handshake Protocol: Client Hello
+    Server Name Indication: public.sqrx.com
 ```
 **Insight: Plain HTTP GET request showing application layer headers.**
 
 
 ### TCP (3-Way Handshake)
 ```txt
-Frame 41: 66 bytes on wire (528 bits)
-Ethernet II
-Internet Protocol Version 4
-Transmission Control Protocol
-    Src Port: 49216 → Dst Port: 443
-    Flags: SYN
+Frame 13: SYN
+    Src: 55190 → Dst: 443 (HTTPS)
+    Flags: SYN, Seq=0
 
-Frame 42: 66 bytes on wire (528 bits)
-Transmission Control Protocol
-    Src Port: 443 → Dst Port: 49216
-    Flags: SYN, ACK
+Frame 18: SYN-ACK
+    Src: 443 → Dst: 55190
+    Flags: SYN, ACK, Seq=0, Ack=1
 
-Frame 43: 54 bytes on wire (432 bits)
-Transmission Control Protocol
-    Src Port: 49216 → Dst Port: 443
-    Flags: ACK
+Frame 19: ACK
+    Src: 55190 → Dst: 443
+    Flags: ACK, Seq=1, Ack=1
 ```
 
 ---
