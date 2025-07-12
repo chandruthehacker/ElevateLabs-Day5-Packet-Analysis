@@ -1,4 +1,4 @@
-# Day 5 – Wireshark Network Traffic Analysis 📡
+# Task 4 – Wireshark Network Traffic Analysis 📡
 
 > **Internship:** Elevate Labs Cybersecurity  
 > **Date:** 30-06-2025   
